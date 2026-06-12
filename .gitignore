@@ -1,0 +1,22 @@
+# Build output
+bin/
+obj/
+*.user
+
+# NuGet
+*.nupkg
+*.snupkg
+
+# IDE
+.vs/
+.idea/
+*.suo
+
+# documentation build output
+/docs/_build/
+
+# CI / publishing config lives only in the private build repo
+/.github/
+
+# scratch
+*.bak
