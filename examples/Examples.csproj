@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>ATickExamples</AssemblyName>
+    <RootNamespace>ATickExamples</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- consume ATick exactly how a user does: one NuGet package -->
+    <PackageReference Include="ATick" Version="1.0.3" />
+  </ItemGroup>
+</Project>
