@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- .NET 2.0 through the latest: old .NET Framework + .NET Standard + modern .NET -->
+    <TargetFrameworks>net20;net35;net40;net48;netstandard2.0;net6.0;net8.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>ATick</AssemblyName>
+    <RootNamespace>Aniketc068.ATick</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+  </PropertyGroup>
+
+  <!-- NuGet package metadata -->
+  <PropertyGroup>
+    <PackageId>ATick</PackageId>
+    <Version>1.0.3</Version>
+    <Authors>Aniket Chaturvedi</Authors>
+    <Title>ATick — PDF digital signatures for .NET</Title>
+    <Description>Standalone PDF digital-signature library for .NET — PAdES/CMS signing (PFX/PEM, deferred eSign/HSM/token), RFC-3161 timestamps, long-term validation and a green-tick appearance Adobe shows as valid. One package, cross-platform (Windows/Linux/macOS, x86/x64/ARM), .NET Framework 2.0 to the latest .NET.</Description>
+    <PackageProjectUrl>https://github.com/Aniketc068/ATick-DotNet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Aniketc068/ATick-DotNet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageTags>pdf;digital-signature;pades;esign;sign-pdf;ltv;timestamp;cms;pkcs7</PackageTags>
+    <Copyright>Copyright (c) 2026 Aniket Chaturvedi</Copyright>
+  </PropertyGroup>
+
+  <!-- reference assemblies so the old .NET Framework targets build on any SDK / OS -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- the native engine for every platform; modern .NET resolves the right one per RID at runtime -->
+    <None Include="runtimes/**" Pack="true" PackagePath="runtimes/" CopyToOutputDirectory="PreserveNewest" />
+    <!-- on .NET Framework (no RID resolution) MSBuild targets copy the right-arch engine to the app output -->
+    <None Include="build/ATick.targets" Pack="true" PackagePath="build/ATick.targets" />
+    <None Include="build/ATick.targets" Pack="true" PackagePath="buildTransitive/ATick.targets" />
+    <None Include="../README.md" Pack="true" PackagePath="\" />
+    <None Include="../assets/atick_logo.png" Pack="true" PackagePath="icon.png" />
+  </ItemGroup>
+
+</Project>

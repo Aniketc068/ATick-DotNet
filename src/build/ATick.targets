@@ -1,0 +1,19 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- On .NET Framework there is no per-RID native resolution, so copy both Windows engines
+       (x64 + x86) next to the consuming application; ATick pre-loads the right one at runtime
+       based on the process bitness. (Modern .NET resolves runtimes/<rid>/native automatically.) -->
+  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'">
+    <None Include="$(MSBuildThisFileDirectory)..\runtimes\win-x64\native\atick.dll">
+      <Link>runtimes\win-x64\native\atick.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)..\runtimes\win-x86\native\atick.dll">
+      <Link>runtimes\win-x86\native\atick.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+
+</Project>
